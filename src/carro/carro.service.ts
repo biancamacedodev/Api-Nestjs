@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCarroDto } from './dto/create-carro.dto';
 import { UpdateCarroDto } from './dto/update-carro.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Carro } from './entities/carro.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class CarroService {
+  constructor(
+    @InjectRepository(Carro)
+    private carroRepository: Repository<Carro>,
+  ) {}
+  
   create(createCarroDto: CreateCarroDto) {
-    return 'This action adds a new carro';
+    return this.carroRepository.save(createCarroDto);
   }
 
-  findAll() {
-    return `This action returns all carro`;
+  findAll(): Promise<Carro[]> {
+    return this.carroRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} carro`;
+  findOne(id: number): Promise<Carro> {
+    return this.carroRepository.findOneBy({ id });
   }
 
   update(id: number, updateCarroDto: UpdateCarroDto) {
-    return `This action updates a #${id} carro`;
+    return this.carroRepository.update(+id, updateCarroDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} carro`;
+  async remove(id: number) {
+    await this.carroRepository.delete(id);
   }
 }
