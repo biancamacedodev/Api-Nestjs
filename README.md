@@ -1,73 +1,73 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# Api 
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Esta API é destinada a fornecer funcionalidades básicas para gerenciar carros e proprietários em um sistema de concessionária de automóveis.
 
-## Description
+## Instalação
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Instale api-nestjs com npm.
 
-## Installation
-
+## 1. Clone este repositório:
+ ```bash
+  git clone https://github.com/biancamacedodev/Api-Nestjs.git
+```
+## 2. Navegue até o diretório do projeto:
 ```bash
-$ npm install
+cd Api-Nestjs
+```
+## 3. Instale as dependências:
+```bash
+npm install
+```
+ 4. Configure o banco de dados no arquivo ormconfig.json conforme necessário.
+
+ ## 5. Execute o projeto:
+ ```bash
+npm run start
 ```
 
-## Running the app
+ 6. O servidor estará disponível em http://localhost:3000.
+## Stack utilizada
 
-```bash
-# development
-$ npm run start
+**Back-end:** 
+- Nest.js
+- NPM 
+- Banco de dados: Mysql
 
-# watch mode
-$ npm run start:dev
 
-# production mode
-$ npm run start:prod
+## Funcionalidades
+
+
+### Carros:
+
+- **Listar Carros**: A API permite listar todos os carros armazenados no sistema, incluindo detalhes como marca, modelo, ano e informações do proprietário, se disponíveis.
+- **Buscar Carro por ID**: É possível buscar um carro específico pelo seu ID, retornando todas as informações detalhadas do carro, incluindo seu proprietário, se atribuído.
+- **Criar Carro**: Os usuários podem criar um novo registro de carro fornecendo os detalhes necessários, como marca, modelo, ano e opcionalmente o ID do proprietário.
+- **Atualizar Carro**: Os usuários podem atualizar os detalhes de um carro existente, incluindo a alteração do proprietário atribuído.
+- **Remover Carro**: Os usuários têm a opção de remover um carro do sistema. Ao remover um carro, o relacionamento com seu proprietário, se existir, também é removido.
+
+### Proprietários:
+
+- **Listar Proprietários**: A API permite listar todos os proprietários registrados no sistema, incluindo detalhes como nome, sobrenome, idade e uma lista de carros associados a cada proprietário, se houver.
+- **Buscar Proprietário por ID**: É possível buscar um proprietário específico pelo seu ID, retornando todas as informações detalhadas do proprietário, incluindo os carros que ele possui.
+- **Criar Proprietário**: Os usuários podem adicionar um novo proprietário ao sistema fornecendo detalhes como nome, sobrenome e idade. É possível também associar carros existentes a este proprietário.
+- **Atualizar Proprietário**: Os detalhes de um proprietário existente podem ser atualizados conforme necessário, incluindo a adição ou remoção de carros associados.
+- **Remover Proprietário**: Os usuários têm a opção de remover um proprietário do sistema. Ao remover um proprietário, todos os carros associados a ele também serão removidos.
+
+
+## Documentação da API
+
+#### Retorna todos os itens
+
+```http
+  GET /carro ou
+   GET /proprietario
+```
+#### Retorna um item
+
+```http
+  GET /carro/${id} ou 
+  GET /proprietario/${id}
 ```
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
