@@ -33,6 +33,7 @@ npm run start
 - Nest.js
 - NPM 
 - Banco de dados: Mysql
+- TypeORM
 
 
 ## Funcionalidades
